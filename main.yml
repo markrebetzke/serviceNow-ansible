@@ -8,6 +8,6 @@
        - docker
 
   - name: Clone GIT Repo
-   git:
-      repo: https://github.com/vaultsystems/docker-servicenow.git
-      dest: /home/ubuntu/servicenow
+    git:
+       repo: https://github.com/vaultsystems/docker-servicenow.git
+       dest: /home/ubuntu/servicenow
