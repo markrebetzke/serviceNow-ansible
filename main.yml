@@ -1,0 +1,13 @@
+---
+- hosts: sn-1
+  tasks:
+  - name: Install packages
+    apt-get:
+       state: present
+    with_items:
+       - docker
+
+  - name: Clone GIT Repo
+   git:
+      repo: https://github.com/vaultsystems/docker-servicenow.git
+      dest: /home/ubuntu/servicenow
