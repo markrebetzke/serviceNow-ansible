@@ -1,13 +1,23 @@
 ---
 - hosts: sn-1
   tasks:
-  - name: Install packages
-    apt:
-       state: present
-    with_items:
-       - docker
+  - name: docker
+    become: true
+    apt: pkg=docker.io state=installed update_cache=true
+
+  - name: docker-compose
+    become: true
+    apt: pkg=docker-compose state=installed update_cache=true
 
   - name: Clone GIT Repo
     git:
        repo: https://github.com/vaultsystems/docker-servicenow.git
        dest: /home/ubuntu/servicenow
+
+  - name: copy zip file
+    copy:
+        src: /home/ubuntu/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
+        dest: /home/ubuntu/servicenow/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
+
+  - name: Build dockercontainer
+    shell: "cd servicenow && docker build -t servicenow ."
