@@ -2,7 +2,7 @@
 - hosts: sn-1
   tasks:
   - name: Install packages
-    apt-get:
+    apt:
        state: present
     with_items:
        - docker
