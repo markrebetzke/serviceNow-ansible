@@ -3,11 +3,11 @@
   tasks:
   - name: docker
     become: true
-    apt: pkg=docker.io state=installed update_cache=true
+    apt: pkg=docker.io state=present update_cache=true
 
   - name: docker-compose
     become: true
-    apt: pkg=docker-compose state=installed update_cache=true
+    apt: pkg=docker-compose state=present update_cache=true
 
   - name: Clone GIT Repo
     git:
