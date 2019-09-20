@@ -11,13 +11,11 @@
       packages:
       - python-pip
       - python3-pip
-      - docker-compose
 
   - pip:
        name: "{{ packages }}"
     vars:
       packages:
-      - docker==2.0.0
       - docker-py==1.10.6
 
   - name: Clone GIT Repo
