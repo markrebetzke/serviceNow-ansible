@@ -1,13 +1,24 @@
 ---
 - hosts: sn-1
   tasks:
-  - name: docker
-    become: true
-    apt: pkg=docker.io state=present update_cache=true
+  - name: Docker
+    become: yes
+    become_method: sudo
+    apt:
+       name: python-pip
+       state: present
+       update_cache: true
+       
+  - name: Docker-Compose
+    become: yes
+    become_method: sudo
+    apt:
+       name: docker-compose
+       state: present
+       update_cache: true
 
-  - name: docker-compose
-    become: true
-    apt: pkg=docker-compose state=present update_cache=true
+  - pip:
+       name: docker
 
   - name: Clone GIT Repo
     git:
@@ -18,6 +29,3 @@
     copy:
         src: /home/ubuntu/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
         dest: /home/ubuntu/servicenow/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
-
-  - name: Build dockercontainer
-    shell: "cd servicenow && docker build -t servicenow ."
