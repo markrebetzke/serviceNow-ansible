@@ -1,38 +1,50 @@
 ---
 - hosts: sn-1
   tasks:
-  - name: Docker
+  - name: Installing packages - pip, pip3, docker and docker-compose
     become: yes
-    apt: 
-       name: "{{ packages }}" 
-       state: present 
+    apt:
+       name: "{{ packages }}"
+       state: present
        update_cache: true
     vars:
       packages:
       - python-pip
       - python3-pip
+      - docker.io
+      - docker-compose
 
-  - pip:
-       name: "{{ packages }}"
-    vars:
-      packages:
-      - docker==== 1.7.0
-      
-  - name: Clone GIT Repo
+  - name: Showing output for apt install
+    shell: sudo apt list --installed | grep -i -e python-pip -e python3-pip -e docker.io -e docker-compose
+    register: apt_install
+
+  - debug: var=apt_install.stdout_lines
+
+  - name: Install PIP docker client
+    pip:
+       name: docker
+
+  - name: Clone GIT Repo for docker-compose and dockerfile builds
     git:
        repo: https://github.com/vaultsystems/docker-servicenow.git
        dest: /home/ubuntu/servicenow
 
-  - name: copy zip file
+  - name: Copy the servicenow zip file from the jumpbox to ServiceNow host
     copy:
         src: /home/ubuntu/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
         dest: /home/ubuntu/servicenow/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
 
-
-  - name: Dockerfile build
+  - name: Build the serviceNow docker image from dockerfile
     become: true
+    become_method: sudo
     docker_image:
-        build:
-           path: /home/ubuntu/servicenow
-        name: servicenowTest:latest
-        source: build
+       name: servicenow
+       build:
+         path: /home/ubuntu/servicenow
+       source: build
+
+  - name: Check if container is running
+    shell: sudo docker image list
+    register: output
+
+  - debug: var=output.stdout_lines
