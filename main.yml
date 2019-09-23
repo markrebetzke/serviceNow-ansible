@@ -34,6 +34,10 @@
         src: /home/ubuntu/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
         dest: /home/ubuntu/servicenow/glide-helsinki-03-16-2016__patch0-hotfix1-05-16-2016_05-16-2016_1044.zip
 
+  - name: Adding Ubuntu to the docker user group
+    become: true
+    user: name=ubuntu groups=docker append=yes
+
   - name: Build the serviceNow docker image from dockerfile
     become: true
     become_method: sudo
@@ -44,7 +48,17 @@
        source: build
 
   - name: Check if container is running
+    become: true
+    become_method: sudo
     shell: sudo docker image list
     register: output
 
   - debug: var=output.stdout_lines
+
+  - name: Create and start services
+    docker_compose:
+       project_src: /home/ubuntu/servicenow
+    register: dc_output
+
+  - debug:
+      var: dc_output
