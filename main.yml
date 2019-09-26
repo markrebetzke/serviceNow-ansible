@@ -25,7 +25,7 @@
        name: 
          - docker
          - docker-py
-       executable: /usr/local/bin/pip
+       executable: /usr/bin/pip
 
   - name: Restart and check PIP
     shell: pip freeze
