@@ -25,6 +25,7 @@
        name: 
          - docker
          - docker-py
+       extra_args: --user
 
   - name: Restart and check PIP
     shell: pip freeze
