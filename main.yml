@@ -22,7 +22,9 @@
 
   - name: Install PIP docker client
     pip:
-       name: docker
+       name: 
+         - docker
+         - docker-py
 
   - name: Restart and check PIP
     shell: pip freeze
