@@ -25,7 +25,6 @@
        name: 
          - docker
          - docker-py
-       extra_args: --user
        executable: /usr/local/bin/pip
 
   - name: Restart and check PIP
