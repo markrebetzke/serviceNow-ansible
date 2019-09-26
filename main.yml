@@ -24,6 +24,12 @@
     pip:
        name: docker
 
+  - name: Restart and check PIP
+    shell: pip freeze
+    register: pip_output
+
+  - debug: var=pip_output.stdout
+
   - name: Clone GIT Repo for docker-compose and dockerfile builds
     git:
        repo: https://github.com/vaultsystems/docker-servicenow.git
