@@ -12,7 +12,6 @@
       - python-pip
       - python3-pip
       - docker.io
-      - docker-compose
 
   - name: Showing output for apt install
     shell: sudo apt list --installed | grep -i -e python-pip -e python3-pip -e docker.io -e docker-compose
@@ -24,7 +23,8 @@
     pip:
        name: 
          - docker
-         - docker-py
+         - docker-py==1.10.6
+         - docker-compose==1.9.0
        executable: /usr/bin/pip
 
   - name: Restart and check PIP
