@@ -7,4 +7,4 @@
   include: /home/ubuntu/serviceNow-ansible/init.yml
   
 - name: test2
-  include: /home/ubuntu/serviceNow-ansible/docker_init.yml
+  include: /home/ubuntu/serviceNow-ansible/docker-init.yml
