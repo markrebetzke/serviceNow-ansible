@@ -1,7 +1,10 @@
 - hosts: sn-1
   tasks:
-  - name: test1 
-    include: /home/ubuntu/serviceNow-ansible/init.yml
-    
-  - name: test2
+    - debug:
+        msg: play1
+
+- name: Include a play after another play
+  include: /home/ubuntu/serviceNow-ansible/init.yml
+  
+- name: test2
     include: /home/ubuntu/serviceNow-ansible/docker_init.yml
