@@ -4,7 +4,7 @@
         msg: play1
 
 - name: Include a play after another play
-  include: /home/ubuntu/serviceNow-ansible/init.yml
+  import_playbook: /home/ubuntu/serviceNow-ansible/init.yml
   
 - name: test2
-  include: /home/ubuntu/serviceNow-ansible/docker-init.yml
+  import_playbook: /home/ubuntu/serviceNow-ansible/docker-init.yml
