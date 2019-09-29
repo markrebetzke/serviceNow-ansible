@@ -1,2 +1,2 @@
-includes: /Users/markrebetzke/servicenow/ansible-playbook/init.yml
-includes: /Users/markrebetzke/servicenow/ansible-playbook/docker_init.yml
+include: /Users/markrebetzke/servicenow/ansible-playbook/init.yml
+include: /Users/markrebetzke/servicenow/ansible-playbook/docker_init.yml
