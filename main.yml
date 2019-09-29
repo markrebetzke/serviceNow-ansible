@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: sn-1
   tasks:
   include: /home/ubuntu/serviceNow-ansible/init.yml
   include: /home/ubuntu/serviceNow-ansible/docker_init.yml
