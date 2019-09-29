@@ -1,0 +1,29 @@
+---
+- hosts: sn-1
+  tasks:
+  - name: Build the serviceNow docker image from dockerfile
+    become: true
+    become_method: sudo
+    docker_image:
+       name: servicenow
+       build:
+         path: /home/ubuntu/servicenow
+       source: build
+
+  - name: Check if container is running
+    become: true
+    become_method: sudo
+    shell: sudo docker image list
+    register: output
+
+  - debug: var=output.stdout_lines
+
+  - name: Create and start services
+    become: true
+    become_method: sudo
+    docker_compose:
+       project_src: /home/ubuntu/servicenow
+    register: dc_output
+
+  - debug:
+      var: dc_output
