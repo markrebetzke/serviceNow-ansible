@@ -1,5 +1,5 @@
 - hosts: sn-1
-  tasks
+  tasks:
   - name: test1 
     include: /home/ubuntu/serviceNow-ansible/init.yml
     
