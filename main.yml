@@ -1,4 +1,7 @@
 - hosts: sn-1
-  tasks:
-  include: /home/ubuntu/serviceNow-ansible/init.yml
-  include: /home/ubuntu/serviceNow-ansible/docker_init.yml
+  tasks
+  - name: test1 
+    include: /home/ubuntu/serviceNow-ansible/init.yml
+    
+  - name: test2
+    include: /home/ubuntu/serviceNow-ansible/docker_init.yml
