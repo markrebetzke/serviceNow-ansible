@@ -29,7 +29,7 @@
        #executable: /usr/bin/pip
 
   - name: Restart and check PIP
-    shell: pip freeze
+    shell: pip3 freeze
     register: pip_output
 
   - debug: var=pip_output.stdout
