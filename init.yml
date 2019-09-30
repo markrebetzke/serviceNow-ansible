@@ -20,6 +20,7 @@
   - debug: var=apt_install.stdout_lines
 
   - name: Install PIP docker client
+    executable: pip-3.3
     pip:
        name: 
          - docker
