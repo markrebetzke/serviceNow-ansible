@@ -24,6 +24,7 @@
        state: present
        name: 
          - docker
+         - requests
          - docker-py==1.10.6
          - docker-compose==1.9.0
        #executable: /usr/bin/pip
