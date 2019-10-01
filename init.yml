@@ -10,6 +10,7 @@
     vars:
       packages:
       - python3-pip
+      - python-pip
       - docker.io
 
   - name: Install PIP docker client
