@@ -20,7 +20,16 @@
          - docker
          - requests
          - docker-compose==1.9.0
-       #executable: /usr/bin/pip3
+       executable: /usr/bin/pip
+       
+  - name: Install PIP3 docker client
+    pip:
+       state: present
+       name: 
+         - docker
+         - requests
+         - docker-compose==1.9.0
+       executable: /usr/bin/pip3
 
   - name: Clone GIT Repo for docker-compose and dockerfile builds
     git:
