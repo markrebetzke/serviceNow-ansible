@@ -10,7 +10,6 @@
     vars:
       packages:
       - python-pip
-      - python3-pip
       - docker.io
 
   - name: Showing output for apt install
@@ -27,7 +26,7 @@
          - requests
          - docker-py==1.10.6
          - docker-compose==1.9.0
-       executable: /usr/bin/pip
+       #executable: /usr/bin/pip
 
   - name: Restart and check PIP
     shell: pip3 freeze
