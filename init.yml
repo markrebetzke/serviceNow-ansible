@@ -20,7 +20,7 @@
          - requests
          - docker-py==1.10.6
          - docker-compose==1.9.0
-       executable: /usr/bin/pip3
+       #executable: /usr/bin/pip3
 
   - name: Clone GIT Repo for docker-compose and dockerfile builds
     git:
