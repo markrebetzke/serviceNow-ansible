@@ -1,10 +1,10 @@
-- hosts: sn-1
+- hosts: servicenow-1
   tasks:
     - debug:
         msg: play1
 
 - name: Include a play after another play
-  import_playbook: /home/ubuntu/serviceNow-ansible/init.yml
+  import_playbook: ~/serviceNow-ansible/init.yml
   
-- name: test2
-  import_playbook: /home/ubuntu/serviceNow-ansible/docker-init.yml
+- name: Build docker environment
+  import_playbook: ~/serviceNow-ansible/docker-init.yml
