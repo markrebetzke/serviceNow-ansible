@@ -1,5 +1,5 @@
 ---
-- hosts: sn-1
+- hosts: servicenow-1
   tasks:
   - name: Build the serviceNow docker image from dockerfile
     become: true
